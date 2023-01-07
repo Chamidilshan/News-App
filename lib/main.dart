@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:news_app/screens/article_screen.dart';
 import 'package:news_app/screens/discover_screen.dart';
 import 'screens/home_screen.dart';
+import 'package:equatable/equatable.dart';
 
 void main() {
   runApp(const MyApp());
