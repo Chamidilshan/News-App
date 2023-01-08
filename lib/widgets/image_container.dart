@@ -5,7 +5,7 @@ class ImageContainer extends StatelessWidget {
     Key? key,
     this.height = 125.0,
     required this.width,
-    required this.imageUrl, required this.child, this.padding,
+    required this.imageUrl, this.child, this.padding,
   }) : super(key: key);
 
   final double width;
@@ -27,6 +27,7 @@ class ImageContainer extends StatelessWidget {
             fit: BoxFit.cover,
           )
       ),
+      child: child,
     );
   }
 }
