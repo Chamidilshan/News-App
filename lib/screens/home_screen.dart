@@ -28,8 +28,91 @@ class HomeScreen extends StatelessWidget {
         padding: EdgeInsets.zero,
         children: [
           _NewsOfTheDay(article: article),
+          _BreakingNews(articles: Article.articles)
         ],
       )
+    );
+  }
+}
+
+class _BreakingNews extends StatelessWidget {
+  const _BreakingNews({
+    Key? key,
+    required this.articles,
+  }) : super(key: key);
+
+  final List<Article> articles;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                'Breaking News',
+                style: Theme.of(context).textTheme.headlineSmall!.copyWith(fontWeight: FontWeight.bold),
+              ),
+              Text(
+                'More',
+                style: Theme.of(context).textTheme.bodyLarge
+              ),
+            ],
+          ),
+          SizedBox(
+            height: 20.0,
+          ),
+          SizedBox(
+            height: 250.0,
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemCount: articles.length,
+                itemBuilder: (context, index){
+                return Container(
+                  margin: EdgeInsets.only(right: 20.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      ImageContainer(width: MediaQuery.of(context).size.width*0.5,
+                          imageUrl: articles[index].imageUrl
+                      ),
+                      SizedBox(
+                        height: 10.0,
+                      ),
+                      Text(
+                      articles[index].title,
+                        maxLines: 2,
+                        style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                            fontWeight: FontWeight.bold,
+                          height: 1.5,
+                        ),
+                      ),
+                      SizedBox(
+                        height: 10.0,
+                      ),
+                      Text(
+                        '${DateTime.now().difference(articles[index].createdAt).inHours} hours ago',
+                        maxLines: 2,
+                        style: Theme.of(context).textTheme.bodySmall,
+                      ),
+                      SizedBox(
+                        height: 5.0,
+                      ),
+                      Text(
+                        'by ${(articles[index].author)}',
+                        style: Theme.of(context).textTheme.bodySmall,
+                      ),
+                    ],
+                  ),
+                );
+                }
+            ),
+          )
+        ],
+      ),
     );
   }
 }
