@@ -4,6 +4,8 @@ import 'package:news_app/widgets/bottom_navi_bar.dart';
 import 'package:news_app/widgets/custom_tag.dart';
 import 'package:news_app/widgets/image_container.dart';
 
+import 'article_screen.dart';
+
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
@@ -72,7 +74,14 @@ class _BreakingNews extends StatelessWidget {
               itemCount: articles.length,
                 itemBuilder: (context, index){
                 return Container(
-                  margin: EdgeInsets.only(right: 20.0),
+                  width: MediaQuery.of(context).size.width*0.5,
+                  margin: EdgeInsets.only(right: 10.0),
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.pushNamed(context, ArticleScreen.routeName,
+                  arguments: articles[index],
+                  );
+                    },
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -106,6 +115,7 @@ class _BreakingNews extends StatelessWidget {
                         style: Theme.of(context).textTheme.bodySmall,
                       ),
                     ],
+                  ),
                   ),
                 );
                 }
