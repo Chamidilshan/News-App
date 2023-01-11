@@ -38,6 +38,27 @@ class DiscoverScreen extends StatelessWidget {
                   'News from all over the world',
                   style: Theme.of(context).textTheme.bodySmall!
                   ),
+                SizedBox(
+                  height: 20.0,
+                ),
+                TextFormField(
+                  decoration: InputDecoration(
+                    hintText: 'Search',
+                    fillColor: Colors.grey.shade200,
+                    filled: true,
+                    prefixIcon: Icon(
+                      Icons.search,
+                      color: Colors.grey,
+                    ),
+                    suffixIcon: RotatedBox(
+                      quarterTurns: 90,
+                      child: Icon(
+                        Icons.tune,
+                        color: Colors.grey,
+                      ),
+                    )
+                  ),
+                )
               ],
             )
           ],
