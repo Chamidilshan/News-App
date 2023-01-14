@@ -4,8 +4,12 @@ class ImageContainer extends StatelessWidget {
   const ImageContainer({
     Key? key,
     this.height = 125.0,
+    this.borderRadius = 20,
     required this.width,
-    required this.imageUrl, this.child, this.padding,
+    required this.imageUrl,
+    this.child,
+    this.padding,
+    this.margin,
   }) : super(key: key);
 
   final double width;
@@ -13,6 +17,8 @@ class ImageContainer extends StatelessWidget {
   final String imageUrl;
    final Widget? child;
    final EdgeInsets? padding;
+  final EdgeInsets? margin;
+  final double borderRadius;
 
   @override
   Widget build(BuildContext context) {
